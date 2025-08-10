@@ -40,16 +40,16 @@ require("nvim-treesitter.configs").setup({
 		enable = true,
 	},
 })
-require("mini.surround").setup()
-require("mini.pairs").setup()
 require("mini.pick").setup()
+require("mini.pairs").setup()
+require("mini.surround").setup()
 
--- vim.lsp.enable assumes these executables are somewhere in PATH
--- This means you have to install them through brew or smth
+--- vim.lsp.enable assumes these executables are somewhere in PATH
+--- This means you have to install them through brew or smth
 vim.lsp.enable({ 'lua_ls', 'gopls' })
 
--- This is autocompletion ↓, with it commented press <C-x> <C-o> for suggestions
--- vim.api.nvim_create_autocmd('LspAttach', {
+--- This is autocompletion ↓, with it commented press <C-x> <C-o> for suggestions
+--- vim.api.nvim_create_autocmd('LspAttach', {
 -- 	group = vim.api.nvim_create_augroup('my.lsp', {}),
 -- 	callback = function(args)
 -- 		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
@@ -62,3 +62,4 @@ vim.cmd("set completeopt+=noselect")
 
 vim.cmd("colorscheme tokyonight")
 vim.cmd(":hi statusline guibg=NONE")
+--- Also I fixed 'Undefined global vim' issue in nvim-lspconfig/lsp/lua_ls.lua
