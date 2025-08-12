@@ -37,6 +37,7 @@ vim.pack.add({
 	{ src = "https://github.com/Wansmer/langmapper.nvim" },
 	{ src = "https://github.com/folke/tokyonight.nvim" },
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
+	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
 	{ src = "https://github.com/echasnovski/mini.pick" },
 	{ src = "https://github.com/echasnovski/mini.pairs" },
 	{ src = "https://github.com/echasnovski/mini.surround" },
@@ -44,6 +45,7 @@ vim.pack.add({
 })
 
 require("langmapper").setup()
+require("gitsigns").setup()
 require("mini.pick").setup()
 require("mini.pairs").setup()
 require("mini.surround").setup()
@@ -63,6 +65,7 @@ vim.lsp.enable({ "lua_ls", "gopls" })
 --- Mapping function from the plugin
 local map = require("langmapper").map
 local MiniPick = require("mini.pick")
+local gitsigns = require("gitsigns")
 map("i", "jk", "<Esc>")
 map("n", "<leader>pv", vim.cmd.Ex)
 map("n", "<C-h>", "<C-w>h")
@@ -81,6 +84,16 @@ map("n", "<leader>q", vim.diagnostic.setloclist)
 map("n", "<leader>l", vim.cmd.nohlsearch)
 map("n", "gl", vim.diagnostic.open_float)
 map("n", "gd", vim.lsp.buf.definition)
+map('n', 'gs', gitsigns.stage_hunk)
+map('n', 'gr', gitsigns.reset_hunk)
+map('n', 'gp', gitsigns.preview_hunk)
+map('n', 'gS', gitsigns.stage_buffer)
+map('n', '<C-n>', function()
+	gitsigns.nav_hunk('next')
+end)
+map('n', '<C-p>', function()
+	gitsigns.nav_hunk('prev')
+end)
 
 --- Autocompletion. Without it press <C-x><C-o> for suggestions
 -- vim.api.nvim_create_autocmd("LspAttach", {
