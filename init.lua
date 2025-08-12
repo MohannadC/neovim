@@ -82,7 +82,7 @@ map("n", "<leader>l", vim.cmd.nohlsearch)
 map("n", "gl", vim.diagnostic.open_float)
 map("n", "gd", vim.lsp.buf.definition)
 
---- Autocompletion. If it's commented out press <C-x><C-o> for suggestions
+--- Autocompletion. Without it press <C-x><C-o> for suggestions
 -- vim.api.nvim_create_autocmd("LspAttach", {
 -- 	group = vim.api.nvim_create_augroup("my.lsp", {}),
 -- 	callback = function(args)
