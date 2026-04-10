@@ -1,0 +1,40 @@
+{
+  "plugins": {
+    "code_runner.nvim": {
+      "rev": "eed10eb4953bc172d7652f30d289a4e575028a98",
+      "src": "https://github.com/CRAG666/code_runner.nvim"
+    },
+    "gitsigns.nvim": {
+      "rev": "7c4faa3540d0781a28588cafbd4dd187a28ac6e3",
+      "src": "https://github.com/lewis6991/gitsigns.nvim"
+    },
+    "langmapper.nvim": {
+      "rev": "57a2fe4d706676aa0386825f27c27a4e3c14e0b0",
+      "src": "https://github.com/Wansmer/langmapper.nvim"
+    },
+    "mini.pairs": {
+      "rev": "b7fde3719340946feb75017ef9d75edebdeb0566",
+      "src": "https://github.com/echasnovski/mini.pairs"
+    },
+    "mini.pick": {
+      "rev": "8521fe21df86e08d9e4b3c3f3a7d50e47954e1af",
+      "src": "https://github.com/echasnovski/mini.pick"
+    },
+    "mini.surround": {
+      "rev": "d205d1741d1fcc1f3117b4e839bf00f74ad72fa2",
+      "src": "https://github.com/echasnovski/mini.surround"
+    },
+    "nvim-lspconfig": {
+      "rev": "d8bf4c47385340ab2029402201d4d7c9f99f437a",
+      "src": "https://github.com/neovim/nvim-lspconfig"
+    },
+    "nvim-treesitter": {
+      "rev": "5cb05e1b0fa3c469958a2b26f36b3fe930af221c",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter"
+    },
+    "tokyonight.nvim": {
+      "rev": "5da1b76e64daf4c5d410f06bcb6b9cb640da7dfd",
+      "src": "https://github.com/folke/tokyonight.nvim"
+    }
+  }
+}

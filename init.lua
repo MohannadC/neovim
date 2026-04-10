@@ -1,4 +1,5 @@
---- Apart from this cfg I fixed "Undefined global vim" issue in nvim-lspconfig/lsp/lua_ls.lua
+--- Apart from this cfg I fixed "Undefined global vim" issue in nvim-lspconfig/lsp/lua_ls.lua . Need to add this to settings = { Lua = { ... }}
+--- diagnostics = {globals = { "vim" }},
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.tabstop = 4
@@ -42,6 +43,7 @@ vim.pack.add({
 	{ src = "https://github.com/echasnovski/mini.pairs" },
 	{ src = "https://github.com/echasnovski/mini.surround" },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
+	{ src = "https://github.com/CRAG666/code_runner.nvim"},
 })
 
 require("langmapper").setup()
@@ -49,15 +51,32 @@ require("gitsigns").setup()
 require("mini.pick").setup()
 require("mini.pairs").setup()
 require("mini.surround").setup()
-require("nvim-treesitter.configs").setup({
-	highlight = {
-		enable = true,
-	},
+-- require("nvim-treesitter.configs").setup({
+-- 	highlight = {
+-- 		enable = true,
+-- 	},
+-- })
+require('code_runner').setup({
+  filetype = {
+    java = {
+      "cd $dir &&",
+      "javac $fileName &&",
+      "java $fileNameWithoutExt"
+    },
+    python = "python3 -u",
+    typescript = "deno run",
+    rust = {
+      "cd $dir &&",
+      "rustc $fileName &&",
+      "$dir/$fileNameWithoutExt"
+    },
+    c = "cd $dir && gcc $fileName -o /tmp/$fileNameWithoutExt && /tmp/$fileNameWithoutExt",
+  },
 })
 
 --- vim.lsp.enable assumes these executables are somewhere in PATH
 --- This means you have to install them through brew or smth
-vim.lsp.enable({ "lua_ls", "gopls" })
+vim.lsp.enable({ "lua_ls", "gopls" , "pyright"})
 
 --- Keymaps
 --- Native mapping function
@@ -66,6 +85,7 @@ vim.lsp.enable({ "lua_ls", "gopls" })
 local map = require("langmapper").map
 local MiniPick = require("mini.pick")
 local gitsigns = require("gitsigns")
+local CodeRunner = require("code_runner")
 map("i", "jk", "<Esc>")
 map("n", "<leader>pv", vim.cmd.Ex)
 map("n", "<C-h>", "<C-w>h")
@@ -84,6 +104,8 @@ map("n", "<leader>q", vim.diagnostic.setloclist)
 map("n", "<leader>l", vim.cmd.nohlsearch)
 map("n", "gl", vim.diagnostic.open_float)
 map("n", "gd", vim.lsp.buf.definition)
+map('n', '<leader>rr', CodeRunner.run_code)
+
 map('n', 'gs', gitsigns.stage_hunk)
 map('n', 'gr', gitsigns.reset_hunk)
 map('n', 'gp', gitsigns.preview_hunk)
